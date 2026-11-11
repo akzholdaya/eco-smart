@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ECO SMART CITY — цифрлық экологиялық платформа</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@700;800&display=swap">
+<style>
+:root{--bg:#eef4ee;--surface:#fff;--ink:#12302c;--muted:#4d6661;--line:#cfdcd2;--brand:#1f7a5c;--sun:#f0c23a;--sky:#2b78b0;--on-brand:#fff;
+--f-d:"Noto Serif",Georgia,serif;--f-b:"Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1f1c;--surface:#16302b;--ink:#e6f2ec;--muted:#9bb5ad;--line:#2a4a43;--brand:#4fc79a;--on-brand:#0e1f1c;--sky:#6db4e6}}
+:root[data-theme="dark"]{--bg:#0e1f1c;--surface:#16302b;--ink:#e6f2ec;--muted:#9bb5ad;--line:#2a4a43;--brand:#4fc79a;--on-brand:#0e1f1c;--sky:#6db4e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-b)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.logo{font:800 17px var(--f-d);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+nav{display:flex;gap:18px;overflow-x:auto;font-size:15px}
+nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+nav a:hover{color:var(--ink)}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--f-d);line-height:1.2;margin:0 0 .5em;font-weight:800}
+h1{font-size:clamp(32px,6vw,58px);max-width:16ch}
+h2{font-size:clamp(25px,4vw,36px)}
+h3{font-size:20px}
+p{margin:0 0 1em;max-width:62ch}
+.lead{font-size:19px;color:var(--muted)}
+.btn{display:inline-block;background:var(--brand);color:var(--on-brand);padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none}
+.btn.ghost{background:none;color:var(--ink);border:2px solid var(--line);margin-left:8px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-top:56px}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.demo h3{margin-bottom:6px}
+.demo small{color:var(--muted)}
+.items{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.items button{font:inherit;font-size:15px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.items button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:14px;padding:16px;min-height:132px;background:var(--bg);border-left:8px solid var(--line);transition:border-color .25s}
+.result b{display:block;font:800 20px var(--f-d);margin-bottom:6px}
+.result p{margin:0 0 6px;font-size:15px}
+.hint{color:var(--muted)}
+.dirs{display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:28px}
+.tabs{display:flex;flex-direction:column;gap:6px}
+.tabs button{font:inherit;text-align:left;background:none;color:var(--ink);border:1px solid transparent;border-radius:12px;padding:12px 14px;cursor:pointer;font-weight:500}
+.tabs button[aria-selected="true"]{background:var(--surface);border-color:var(--line);font-weight:700;box-shadow:inset 4px 0 0 var(--brand)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
+.panel ul{padding-left:20px;margin:0}
+.panel li{margin-bottom:8px}
+.panel .ico{font-size:40px;line-height:1}
+.steps{list-style:none;counter-reset:s;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.steps li{counter-increment:s;border-top:3px solid var(--sun);padding-top:12px;font-size:16px}
+.steps li::before{content:counter(s);display:block;font:800 28px var(--f-d);color:var(--sun);margin-bottom:4px}
+.scroll{overflow-x:auto;margin-top:24px}
+table{border-collapse:collapse;width:100%;min-width:480px;background:var(--surface);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+th{background:var(--ink);color:var(--bg);font-weight:700}
+tr:last-child td{border-bottom:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.split ul{padding-left:20px;margin:0}
+.split li{margin-bottom:8px}
+.band{background:var(--ink);color:var(--bg)}
+.band .lead,.band p{color:inherit}
+.pitch{border-left:6px solid var(--sun);padding-left:20px;font-size:20px;max-width:56ch}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+@media(max-width:780px){.hero,.dirs,.split{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto}.tabs button{white-space:nowrap}section{padding:52px 0}.btn.ghost{margin:10px 0 0}}
+.flow{display:grid;grid-template-columns:1fr 330px;gap:36px;margin-top:28px;align-items:start}
+.fsteps{display:flex;flex-direction:column;gap:6px}
+.fsteps button{font:inherit;display:flex;gap:12px;align-items:center;text-align:left;color:inherit;background:none;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 14px;cursor:pointer}
+.fsteps button b{font:800 18px var(--f-d);color:var(--sun);min-width:20px}
+.fsteps button[aria-current="true"]{background:var(--sun);color:#12302c;border-color:var(--sun)}
+.fsteps button[aria-current="true"] b{color:#12302c}
+.phone{width:300px;max-width:100%;margin:0 auto;background:#0b1715;border-radius:34px;padding:10px;box-shadow:0 0 0 2px rgba(255,255,255,.2)}
+.screen{background:var(--surface);color:var(--ink);border-radius:26px;height:520px;padding:18px 16px;overflow:hidden;font-size:14px;line-height:1.45;display:flex;flex-direction:column;gap:10px}
+.screen h4{font:800 17px var(--f-d);margin:0}
+.screen small,.note{color:var(--muted);font-size:12px}
+.fld{border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--muted)}
+.sbtn{font:inherit;font-weight:700;background:var(--brand);color:var(--on-brand);border:0;border-radius:10px;padding:11px;cursor:pointer}
+.map{position:relative;flex:1;border-radius:14px;border:1px solid var(--line);background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/40px 40px,var(--bg)}
+.pin{position:absolute;width:22px;height:22px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 2px currentColor}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+.scanbox{position:relative;flex:1;border-radius:14px;background:var(--bg);display:grid;place-items:center;font-size:84px;overflow:hidden}
+.scanbox i{position:absolute;left:0;right:0;height:3px;background:var(--brand);box-shadow:0 0 12px var(--brand);animation:scan 1.2s ease-in-out 1}
+@keyframes scan{from{top:0}50%{top:100%}to{top:0}}
+.badge{display:inline-block;background:var(--brand);color:var(--on-brand);border-radius:999px;padding:4px 12px;font-weight:700;font-size:13px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{font:inherit;font-size:13px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tl li{border-left:4px solid var(--line);padding:6px 10px;opacity:.35;transition:opacity .4s,border-color .4s}
+.tl li.on{opacity:1;border-color:var(--brand)}
+.bar{height:12px;border-radius:6px;background:var(--bg);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--brand);border-radius:6px;transition:width .8s}
+.brow{display:grid;grid-template-columns:70px 1fr 36px;gap:8px;align-items:center;font-size:13px}
+.ctrl{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.ctrl button{font:inherit;color:inherit;background:none;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 16px;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--sun);color:#12302c;border-color:var(--sun)}
+@media(max-width:780px){.flow{grid-template-columns:1fr}}
+.btn{transition:transform .2s}.btn:hover{transform:translateY(-2px)}
+.scene{display:block;width:100%;max-width:460px;margin-top:30px}
+.scene .bld{fill:var(--ink);opacity:.85}
+.scene .win{fill:var(--sun);animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+.scene .cloud{fill:var(--line);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(-20px)}to{transform:translateX(40px)}}
+.scene .sunr{transform-origin:380px 50px;animation:spin 18s linear infinite;stroke:var(--sun);fill:none;stroke-dasharray:4 7;stroke-width:3}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scene .tree{transform-box:fill-box;transform-origin:50% 100%;animation:grow 1.4s ease-out both,sway 4s ease-in-out infinite alternate}
+@keyframes grow{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes sway{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+.scene .rec{transform-box:fill-box;transform-origin:center;animation:spin 6s linear infinite}
+.scene .drop{fill:var(--sky);animation:fall 2.4s ease-in infinite}
+@keyframes fall{from{transform:translateY(-10px);opacity:0}20%{opacity:1}to{transform:translateY(40px);opacity:0}}
+.pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid currentColor;animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{transform:scale(.5);opacity:.9}to{transform:scale(1.4);opacity:0}}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">ECO SMART CITY</a>
+<nav><a href="#demo">Демо</a><a href="#bagyttar">Бағыттар</a><a href="#qalai">Қалай жұмыс істейді</a><a href="#tech">Технологиялар</a><a href="#natizhe">Нәтижелер</a></nav></div></header>
+
+<main id="top">
+<section class="wrap hero" id="demo">
+<div>
+<h1>Ақылды қала таза ауладан басталады</h1>
+<p class="lead">Жасанды интеллект көмегімен қалдықты сұрыптауға, ауа мен судың жағдайын бақылауға, жасыл аймақтарды қорғауға және тұрғындарды қала үшін қамқорлыққа тартуға көмектесетін біртұтас цифрлық платформа.</p>
+<a class="btn" href="#bagyttar">Платформа не істей алады</a><a class="btn ghost" href="#qalai">Қалай жұмыс істейді</a>
+<svg class="scene" viewBox="0 0 460 200" role="img" aria-label="Жасыл қала анимациясы"><circle class="sunr" cx="380" cy="50" r="30"/><circle cx="380" cy="50" r="20" fill="var(--sun)"/><g class="cloud"><ellipse cx="90" cy="40" rx="30" ry="12"/><ellipse cx="115" cy="34" rx="22" ry="11"/></g><g class="cloud" style="animation-duration:20s"><ellipse cx="250" cy="70" rx="26" ry="10"/><ellipse cx="270" cy="64" rx="18" ry="9"/></g><rect class="bld" x="30" y="90" width="50" height="80"/><rect class="bld" x="90" y="60" width="44" height="110"/><rect class="bld" x="144" y="105" width="56" height="65"/><rect class="bld" x="300" y="80" width="48" height="90"/><rect class="bld" x="358" y="110" width="40" height="60"/><rect class="win" x="42" y="104" width="8" height="8"/><rect class="win" x="60" y="124" width="8" height="8" style="animation-delay:1s"/><rect class="win" x="102" y="78" width="8" height="8" style="animation-delay:.5s"/><rect class="win" x="118" y="110" width="8" height="8" style="animation-delay:1.7s"/><rect class="win" x="158" y="122" width="8" height="8" style="animation-delay:2.2s"/><rect class="win" x="312" y="98" width="8" height="8" style="animation-delay:.8s"/><rect class="win" x="326" y="130" width="8" height="8" style="animation-delay:1.4s"/><rect class="win" x="370" y="128" width="8" height="8" style="animation-delay:2s"/><rect x="0" y="170" width="460" height="30" fill="var(--line)"/><g class="tree" style="animation-delay:.3s,1.7s"><rect x="213" y="150" width="5" height="20" fill="#7a5a3a"/><circle cx="215.5" cy="142" r="15" fill="var(--brand)"/></g><g class="tree" style="animation-delay:.7s,2.1s"><rect x="257" y="146" width="5" height="24" fill="#7a5a3a"/><circle cx="259.5" cy="136" r="18" fill="var(--brand)"/></g><g class="tree" style="animation-delay:1.1s,2.5s"><rect x="13" y="152" width="5" height="18" fill="#7a5a3a"/><circle cx="15.5" cy="145" r="12" fill="var(--brand)"/></g><path class="drop" d="M235 100 q-5 8 0 12 q5 -4 0 -12z"/><path class="drop" d="M285 96 q-5 8 0 12 q5 -4 0 -12z" style="animation-delay:1.2s"/><rect x="408" y="140" width="30" height="30" rx="4" fill="var(--brand)"/><text class="rec" x="423" y="161" text-anchor="middle" font-size="16">♻️</text></svg>
+</div>
+<div class="demo" aria-live="polite">
+<h3>Қайда тастау керек?</h3>
+<small>Демо-нұсқа: затты таңдаңыз. Қосымшада AI оны фото бойынша анықтайды.</small>
+<div class="items" id="items" role="group" aria-label="Заттар"></div>
+<div class="result" id="result"><span class="hint">Қалдық санатын және кәдеге жарату кеңесін көру үшін затты таңдаңыз.</span></div>
+</div>
+</section>
+
+<section class="wrap" id="bagyttar">
+<h2>Бір жүйедегі бес бағыт</h2>
+<p class="lead">Платформа мәселелерді тауып қана қоймай, оларды шешу жолдарын да ұсынады.</p>
+<div class="dirs">
+<div class="tabs" role="tablist" aria-label="Бағыттар" id="tabs"></div>
+<div class="panel" id="panel" role="tabpanel" tabindex="0"></div>
+</div>
+</section>
+
+<section class="band" id="qalai"><div class="wrap">
+<h2>Платформа қалай жұмыс істейді</h2>
+<p class="lead">Қадамды таңдаңыз немесе «Автоойнату» түймесін басып, пайдаланушы жолын телефон экранынан көріңіз. Деректер — үлгі.</p>
+<div class="flow">
+<div class="fsteps" id="fsteps"></div>
+<div><div class="phone"><div class="screen" id="screen" aria-live="polite"></div></div>
+<div class="ctrl"><button type="button" id="prev">Артқа</button><button type="button" id="play" aria-pressed="false">Автоойнату</button><button type="button" id="next">Алға</button></div></div>
+</div>
+<ol class="steps" hidden>
+<li>Пайдаланушы жүйеде тіркеледі.</li>
+<li>Өз қаласының экологиялық картасына қол жеткізеді.</li>
+<li>Қалдықты суретке түсіреді, ал AI оның санатын анықтайды.</li>
+<li>Ластану немесе басқа мәселе туралы хабарлайды.</li>
+<li>Жүйе деректерді талдап, шешімдер ұсынады.</li>
+<li>Пайдаланушы тапсырмаларды орындап, ұпай алады.</li>
+<li>Деректер мониторингке арналған аналитикалық панельде көрсетіледі.</li>
+</ol></div></section>
+
+<section class="wrap" id="tech">
+<h2>Технологиялар</h2>
+<div class="scroll"><table>
+<thead><tr><th>Технология</th><th>Міндеті</th></tr></thead>
+<tbody>
+<tr><td>Artificial Intelligence</td><td>Қалдықты тану және жіктеу</td></tr>
+<tr><td>Machine Learning</td><td>Экологиялық деректерді талдау</td></tr>
+<tr><td>Python</td><td>AI-модельдерін әзірлеу</td></tr>
+<tr><td>HTML, CSS, JavaScript</td><td>Веб-платформа жасау</td></tr>
+<tr><td>Google Maps API</td><td>Интерактивті экологиялық карта</td></tr>
+<tr><td>Firebase</td><td>Пайдаланушы деректерін сақтау</td></tr>
+<tr><td>Arduino / IoT</td><td>Мониторинг датчиктерін қосу</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="wrap">
+<div class="split">
+<div><h2>Жобаның айырмашылығы</h2>
+<p>ECO SMART CITY бірнеше экологиялық бағытты біртұтас цифрлық экожүйеге біріктіреді.</p>
+<p>Әдеттегі экологиялық қосымшалар тек ақпарат береді. Біздің платформа құралдар ұсынады: қалдықты тану, қоршаған ортаны бақылау, мәселелерді тіркеу және тұрғындарды табиғатты қорғау ісіне тарту.</p></div>
+<div><h2>Кімдерге арналған</h2>
+<ul><li>Қала тұрғындары</li><li>Оқушылар мен студенттер</li><li>Білім беру мекемелері</li><li>Экологиялық ұйымдар</li><li>Қайта өңдеу кәсіпорындары</li><li>Жергілікті басқару органдары</li></ul></div>
+</div>
+</section>
+
+<section class="wrap" id="natizhe">
+<div class="split">
+<div><h2>Күтілетін нәтижелер</h2>
+<ul><li>Халықтың экологиялық сауаттылығының артуы</li><li>Қалдықты сұрыптау мәдениетінің дамуы</li><li>Дұрыс кәдеге жаратылмайтын қоқыс көлемінің азаюы</li><li>Экологиялық ақпараттың қолжетімділігі</li><li>Табиғи ресурстарды ұтымды пайдалану</li><li>Қаладағы экологиялық мәселелердің цифрлық базасы</li></ul></div>
+<div><h2>Даму перспективалары</h2>
+<p>Жобаны Қазақстанның басқа қалаларына кеңейтуге, муниципалдық экологиялық қызметтермен, қайта өңдеу кәсіпорындарымен және білім беру ұйымдарымен біріктіруге болады.</p></div>
+</div>
+</section>
+
+<section class="band"><div class="wrap">
+<h2>Біздің миссиямыз</h2>
+<p class="pitch">Адамдарды экологиялық мәселелер туралы жай ғана хабардар етпей, оларға нақты экологиялық әрекетке арналған цифрлық құралдарды беру.</p>
+<p><b>ECO SMART CITY — таза болашақ үшін технологиялар!</b></p>
+</div></section>
+</main>
+<footer><div class="wrap">ECO SMART CITY — болашақтың ақылды экологиялық экожүйесі.</div></footer>
+
+<script>
+var WASTE=[
+{n:"Пластик бөтелке",e:"🧴",c:"Пластик",col:"#e0a526",t:"Шайыңыз, қысыңыз, қақпағын бұраңыз. Затбелгіні алу міндетті емес."},
+{n:"Газет",e:"📰",c:"Қағаз",col:"#2b78b0",t:"Құрғақ қағазды макулатураға тапсырыңыз. Майланған немесе су болған қағазды салуға болмайды."},
+{n:"Шыны құты",e:"🫙",c:"Шыны",col:"#1f9d6a",t:"Қақпағын алып, шайыңыз. Керамика мен айнаны шыныға салмайды."},
+{n:"Консерв банкасы",e:"🥫",c:"Металл",col:"#7a8794",t:"Банканы жуып, қысыңыз. Алюминий мен болатты бірге қабылдайды."},
+{n:"Батарейка",e:"🔋",c:"Қауіпті қалдықтар",col:"#c0392b",t:"Қарапайым контейнерге тастамаңыз. Арнайы қабылдау пунктіне тапсырыңыз."}
+];
+var DIRS=[
+{k:"Smart Waste",s:"Қалдықты ақылды басқару",i:"♻️",l:["Қоқысты жасанды интеллектпен тану","Автоматты жіктеу: пластик, қағаз, шыны, металл","Ең жақын қайта өңдеу пункттерін іздеу","Қоқыс контейнерлерінің толуын бақылау"]},
+{k:"Eco Monitoring",s:"Экологиялық мониторинг",i:"🌫️",l:["Ауа мен судың сапасын қадағалау","Датчиктерден деректер жинау","Ластану деңгейін интерактивті картада көрсету","Экологиялық тұрғыдан қолайсыз аймақтарды анықтау"]},
+{k:"Green Nature",s:"Табиғатты қорғау",i:"🌳",l:["Ағаштардың жағдайын AI арқылы анықтау","Өсімдік ауруларының белгілерін табу","Қаланың жасыл аймақтар картасы","Күтім және көгалдандыру бойынша кеңестер"]},
+{k:"Resource Save",s:"Ресурстарды ұтымды пайдалану",i:"💧",l:["Тағам қалдығын азайту","Азық-түлікпен алмасу және заттарды қайта пайдалану","Су мен электр қуатын үнемдеуді насихаттау","Жауапты тұтыну мәдениетін қалыптастыру"]},
+{k:"Eco Community",s:"Экологиялық қауымдастық",i:"🤝",l:["Экологиялық тапсырмалар мен челлендждер","Ұпай және рейтинг жүйесі","Экологиялық акциялар мен сенбіліктер ұйымдастыру","Пайдаланушыларды жауапты мінез-құлыққа ынталандыру"]}
+];
+var items=document.getElementById("items"),res=document.getElementById("result");
+WASTE.forEach(function(w){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.textContent=w.e+" "+w.n;
+b.onclick=function(){[].forEach.call(items.children,function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");
+res.style.borderColor=w.col;res.innerHTML="";
+var h=document.createElement("b");h.textContent=w.c;var p=document.createElement("p");p.textContent=w.t;var q=document.createElement("p");q.className="hint";q.textContent="Қосымшада: ең жақын қабылдау пунктін карта көрсетеді.";
+res.appendChild(h);res.appendChild(p);res.appendChild(q)};items.appendChild(b)});
+var tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function show(i){[].forEach.call(tabs.children,function(t,j){t.setAttribute("aria-selected",j===i?"true":"false")});
+var d=DIRS[i];panel.innerHTML="";var ic=document.createElement("div");ic.className="ico";ic.textContent=d.i;
+var h=document.createElement("h3");h.textContent=d.k+": "+d.s;var u=document.createElement("ul");
+d.l.forEach(function(x){var li=document.createElement("li");li.textContent=x;u.appendChild(li)});
+panel.appendChild(ic);panel.appendChild(h);panel.appendChild(u)}
+DIRS.forEach(function(d,i){var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=d.k;b.onclick=function(){show(i)};tabs.appendChild(b)});
+show(0);
+var FS=["Тіркелу","Экологиялық карта","AI қалдықты таниды","Мәселе туралы хабарлау","Жүйе талдайды","Тапсырма және ұпай","Аналитикалық панель"];
+var fst=document.getElementById("fsteps"),scr=document.getElementById("screen"),cur=0,timers=[],auto=null;
+function later(f,ms){timers.push(setTimeout(f,ms))}
+var PIN=function(x,y,c){return '<span class="pin" style="left:'+x+'%;top:'+y+'%;color:'+c+';background:'+c+'"></span>'};
+var SCR=[
+function(){return '<h4>Тіркелу</h4><small>Бір минутта аккаунт ашыңыз</small><div class="fld">Аты-жөніңіз</div><div class="fld">Электрондық пошта</div><div class="fld">Қала: Алматы</div><button class="sbtn" type="button" data-ok="Аккаунт ашылды ✓">Тіркелу</button>'},
+function(){return '<h4>Экологиялық карта</h4><div class="map">'+PIN(18,22,"#1f9d6a")+PIN(55,15,"#e0a526")+PIN(72,48,"#c0392b")+PIN(30,60,"#1f9d6a")+PIN(48,78,"#2b78b0")+PIN(80,80,"#e0a526")+'</div><div class="legend"><span><i class="dot" style="background:#1f9d6a"></i>Таза</span><span><i class="dot" style="background:#e0a526"></i>Орташа</span><span><i class="dot" style="background:#c0392b"></i>Ластанған</span><span><i class="dot" style="background:#2b78b0"></i>Қабылдау пункті</span></div>'},
+function(){later(function(){var r=document.getElementById("ai");if(r)r.innerHTML='<span class="badge">Пластик · 96%</span><p style="margin:6px 0 0">Сары контейнерге салыңыз. Ең жақын пункт: 350 м.</p>'},1200);return '<h4>Қалдықты түсіріңіз</h4><div class="scanbox">🧴<i></i></div><div id="ai"><small>Талдануда…</small></div>'},
+function(){return '<h4>Мәселе туралы хабарлау</h4><div class="chips" id="ch"><button type="button" aria-pressed="true">Қоқыс үйіндісі</button><button type="button" aria-pressed="false">Ауа ластануы</button><button type="button" aria-pressed="false">Су ластануы</button><button type="button" aria-pressed="false">Ауру ағаш</button></div><div class="fld">📍 Орны автоматты анықталды</div><div class="fld">📷 Сурет қосылды</div><button class="sbtn" type="button" data-ok="Жіберілді ✓">Жіберу</button>'},
+function(){later(function(){var l=scr.querySelectorAll(".tl li");[].forEach.call(l,function(x,i){later(function(){x.classList.add("on")},i*700)})},200);return '<h4>Жүйе талдайды</h4><ul class="tl"><li><b>Хабарлама қабылданды</b><br><small>Санат пен орын тексерілді</small></li><li><b>Деректер салыстырылды</b><br><small>Датчиктер мен ұқсас хабарламалар</small></li><li><b>Шешім ұсынылды</b><br><small>Коммуналдық қызметке жіберілді</small></li></ul>'},
+function(){later(function(){var b=scr.querySelector(".bar span");if(b)b.style.width="62%"},150);return '<h4>Экотапсырма</h4><div class="fld" style="color:var(--ink)">♻️ Бір апта қалдықты сұрыптаңыз</div><span class="badge" style="align-self:flex-start">+50 ұпай</span><div class="bar"><span style="width:0"></span></div><small>Келесі деңгейге дейін 62%</small><div class="fld" style="color:var(--ink)">🏆 Рейтинг: қалада 12-орын</div><div class="fld" style="color:var(--ink)">🌱 Белсенді жасыл белгісі</div>'},
+function(){later(function(){[].forEach.call(scr.querySelectorAll(".bar span"),function(b){b.style.width=b.dataset.w+"%"})},150);var d=[["Қағаз",42],["Пластик",31],["Шыны",18],["Металл",9]],h='<h4>Аналитикалық панель</h4><small>Сұрыпталған қалдықтар үлесі</small>';d.forEach(function(x){h+='<div class="brow"><span>'+x[0]+'</span><div class="bar"><span style="width:0" data-w="'+x[1]+'"></span></div><b>'+x[1]+'%</b></div>'});return h+'<div class="fld" style="color:var(--ink)">Ластану нүктелері: 14 → 9</div><div class="fld" style="color:var(--ink)">Белсенді қатысушылар: 1 280</div><small>Үлгі деректер</small>'}
+];
+function go(i){cur=(i+FS.length)%FS.length;timers.forEach(clearTimeout);timers=[];
+[].forEach.call(fst.children,function(b,j){if(j===cur)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+scr.innerHTML=SCR[cur]();
+[].forEach.call(scr.querySelectorAll(".sbtn"),function(b){b.onclick=function(){b.textContent=b.dataset.ok;b.disabled=true}});
+[].forEach.call(scr.querySelectorAll("#ch button"),function(b){b.onclick=function(){[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true")}})}
+FS.forEach(function(t,i){var b=document.createElement("button");b.type="button";b.innerHTML="<b>"+(i+1)+"</b><span></span>";b.lastChild.textContent=t;b.onclick=function(){go(i)};fst.appendChild(b)});
+document.getElementById("prev").onclick=function(){go(cur-1)};
+document.getElementById("next").onclick=function(){go(cur+1)};
+var pl=document.getElementById("play");pl.onclick=function(){if(auto){clearInterval(auto);auto=null;pl.setAttribute("aria-pressed","false")}else{auto=setInterval(function(){go(cur+1)},4500);pl.setAttribute("aria-pressed","true")}};
+go(0);
+(function(){if(!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll(".split>div,.dirs,.scroll,.flow,#tech h2,.pitch").forEach(function(el){el.classList.add("rv");io.observe(el)})})();
+</script>
+</body>
+</html>
